@@ -3,8 +3,8 @@
 <head><!DOCTYPE html>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-sc  ale=1, shrink-to-fit=no">
-	<title>Clientes | Balance</title>
+	
+	<title>Agregar Clientes | Balance</title>
 
 	<!-- Global stylesheets -->
 	<link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
@@ -25,14 +25,25 @@
 	<!-- Theme JS files -->
 	<script src="../js/global/plugins/tables/datatables/datatables.min.js"></script>
 	<script src="../js/global/plugins/forms/selects/select2.min.js"></script>
+    <script src="../js/global/plugins/forms/styling/uniform.min.js"></script>
+    <script src="../js/global/plugins/ui/moment/moment.min.js"></script>
+    <script src="../js/global/plugins/pickers/pickadate/picker.js"></script>
+    <script src="../js/global/plugins/pickers/pickadate/picker.date.js"></script>
+    <script src="../js/global/plugins/pickers/pickadate/picker.time.js"></script>
+    <script src="../js/global/plugins/pickers/pickadate/legacy.js"></script>
+    <script src="../js/global/plugins/pickers/anytime.min.js"></script>
+    <script src="../js/global/plugins/pickers/daterangepicker.js"></script>
 
 	<script src="../js/app.js"></script>
 	<script src="../js/global/demo_pages/datatables_basic.js"></script>
+    <script src="../js/global/demo_pages/form_inputs.js"></script>
+    <script src="../js/global/demo_pages/form_select2.js"></script>
+    <script src="../js/global/demo_pages/picker_date.js"></script>
 	<!-- /theme JS files -->
 
 </head>
 
-<body onload="obtenerListaClientes();">
+<body>
 	<!-- Main navbar -->
 	<div class="navbar navbar-expand-md navbar-dark">
 		<div class="navbar-brand">
@@ -145,7 +156,7 @@
 			<div class="page-header page-header-light">
 				<div class="page-header-content header-elements-md-inline">
 					<div class="page-title d-flex">
-						<h4><i class="icon-users4 mr-2"></i> <span class="font-weight-semibold">Listado de Clientes</span></h4>
+						<h4><i class="icon-user-plus mr-2"></i> <span class="font-weight-semibold">Agregar Clientes</span></h4>
 						<a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
 					</div>
 					
@@ -153,62 +164,86 @@
 			</div>
 			<!-- /page header -->
 
-
 			<!-- Content area -->
 			<div class="content">
 
-				<!-- Basic datatable -->
 				<div class="card">
-					<div class="card-header header-elements-inline">
-						<h5 class="card-title"></h5>
-						<div class="header-elements">
-							<div class="list-icons">
-		                		<a class="list-icons-item" data-action="collapse"></a>
-		                		<a class="list-icons-item" data-action="reload"></a>
-		                		<a class="list-icons-item" data-action="remove"></a>
-		                	</div>
-	                	</div>
-					</div>
-					
-					<table id="table_lista_clientes" class="table datatable-basic">
-						<thead>
-							<tr>
-								<th>Nombre</th>
-								<th>Apellidos</th>
-								<th>Teléfono</th>
-								<th>Fecha Pago</th>
-								<th>Estado</th>
-								<th class="text-center">Opciones</th>
-							</tr>
-						</thead>
-						<tbody>						
-							<tr>
-								<td>Chantal</td>
-								<td><a href="#">Nailor</a></td>
-								<td>Technical Services Librarian</td>
-								<td>10 Jan 1980</td>
-								<td><span class="badge badge-secondary">Inactive</span></td>
-								<td class="text-center">
-									<div class="list-icons">
-										<div class="dropdown">
-											<a href="#" class="list-icons-item" data-toggle="dropdown">
-												<i class="icon-menu9"></i>
-											</a>
+                    <div class="card-header header-elements-inline">
+                        <h6 class="card-title"></h6>
+                        <div class="header-elements">
+                            <div class="list-icons">
+                                <a class="list-icons-item" data-action="collapse"></a>
+                                <a class="list-icons-item" data-action="reload"></a>                                
+                            </div>
+                        </div>
+                    </div>
 
-											<div class="dropdown-menu dropdown-menu-right">
-												<a href="#" class="dropdown-item"><i class="icon-file-pdf"></i> Export to .pdf</a>
-												<a href="#" class="dropdown-item"><i class="icon-file-excel"></i> Export to .csv</a>
-												<a href="#" class="dropdown-item"><i class="icon-file-word"></i> Export to .doc</a>
-											</div>
-										</div>
-									</div>
-								</td>
-							</tr>				
-																	
-						</tbody>
-					</table>
-				</div>
-				<!-- /basic datatable -->
+                    <div class="card-body">                     
+                        
+                        <label>Nombre:</label>
+                        <div class="form-group form-group-feedback form-group-feedback-left">
+                            <input type="text" class="form-control form-control-lg">
+                            <div class="form-control-feedback form-control-feedback-lg">
+                                <i class="icon-make-group"></i>
+                            </div>
+                        </div>                                        
+
+                        <label>Apellidos:</label>
+                        <div class="form-group form-group-feedback form-group-feedback-left">
+                            <input type="text" class="form-control form-control-lg">
+                            <div class="form-control-feedback form-control-feedback-lg">
+                                <i class="icon-dots"></i>
+                            </div>
+                        </div>                       
+                        
+                        <div class="form-group">
+                            <label>Fecha Ingreso:</label>
+                            <div class="input-group">
+                                <span class="input-group-prepend">
+                                    <span class="input-group-text"><i class="icon-calendar22"></i></span>
+                                </span>
+                                <input type="text" class="form-control daterange-single" value="03/18/2013">
+                            </div>
+                        </div>
+
+                        <label>Telefóno:</label>
+                        <div class="form-group form-group-feedback form-group-feedback-left">
+                            <input type="text" class="form-control form-control-lg" placeholder="xxxx-xxxx"> 
+                            <div class="form-control-feedback form-control-feedback-lg">
+                                <i class="icon-iphone"></i>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label>Rol Asistencia:</label>
+                            <select class="form-control select" data-container-css-class="border-primary text-primary-700" data-dropdown-css-class="border-primary" data-fouc>
+                                <option value="Día">Día</option>
+                                <option value="Tarde">Tarde</option>                                 
+                                <option value="Noche">Noche</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Estado:</label>
+                            <select class="form-control select" data-container-css-class="border-primary text-primary-700" data-dropdown-css-class="border-primary" data-fouc>
+                                <option value="1">Activo</option>
+                                <option value="0">Inactivo</option>                                 
+                                
+                            </select>
+                        </div>
+
+                        <div class="form-group mb-0">
+                            <label>Dirección:</label>
+                            <textarea rows="3" cols="3" class="form-control" placeholder="Ingrese la dirección aquí..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="card-footer d-flex justify-content-between align-items-center bg-teal-400 border-top-0">
+                        <button type="submit" class="btn btn-outline bg-white text-white border-white border-2">Limpiar..<i class="icon-eraser2 ml-2"></i></button>
+                        <button type="submit" class="btn btn-outline bg-white text-white border-white border-2">Ingresar..<i class="icon-folder-plus4 ml-2"></i></button>
+                    </div>
+                </div>
 				
 			</div>
 			<!-- /content area -->
