@@ -55,3 +55,27 @@ function obtenerListaClientes(){
             
     }
 }
+
+/// --- 2. FUNCION PARA ALMACENAR LOS CLIENTES ---
+
+document.querySelector('#buttonIngresarInfoClientes').addEventListener('click', insertarClientes); // BOTON EJECUTA LA FUNCIÓN
+
+function insertarClientes(){
+    
+    var nombre = document.getElementById("campoNombreCliente").value;
+    var apellidos = document.getElementById("campoApellidosCliente").value;
+    var fechaIngreso = document.getElementById("campoFechaIngresoCliente").value;
+    var telefono = document.getElementById("campoTelefonoCliente").value;
+    var rolAsistencia = document.getElementById("campoRolAsistenciaCliente").value;
+    var estado = document.getElementById("campoEstadoCliente").value;
+    var direccion = document.getElementById("campoDireccionCliente").value;
+
+    if(nombre.length == 0 || apellidos.length == 0 || telefono.length == 0 || direccion.length == 0){        
+        document.getElementById("buttonNotificarVacio").click();
+    }
+
+    else{
+         
+        document.getElementById("buttonNotificarInsercion").click();
+    }
+}

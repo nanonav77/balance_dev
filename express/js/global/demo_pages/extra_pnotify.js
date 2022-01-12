@@ -134,11 +134,29 @@ var Pnotify = function() {
             });
         });
 
+        // NOTIFICACION PARA SOLICITAR TODOS LOS CAMPOS ESTEN COMPLETOS
+        $('#buttonNotificarVacio').on('click', function () {
+            new PNotify({
+                title: 'Error!',
+                text: 'Debe ingresar los datos solicitados.',
+                addclass: 'bg-danger border-danger'
+            });
+        });
+
         // Solid success
         $('#pnotify-solid-success').on('click', function () {
             new PNotify({
                 title: 'Success notice',
                 text: 'Check me out! I\'m a notice.',
+                addclass: 'bg-success border-success'
+            });
+        });
+
+        // NOTIFICACION DE QUE LOS CAMPOS HAN SIDO REGISTRADOS CON ÉXITO
+        $('#buttonNotificarInsercion').on('click', function () {
+            new PNotify({
+                title: 'Éxito!',
+                text: 'Los datos han si ingresados.',
                 addclass: 'bg-success border-success'
             });
         });
