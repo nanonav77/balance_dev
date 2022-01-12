@@ -156,7 +156,7 @@ var Pnotify = function() {
         $('#buttonNotificarInsercion').on('click', function () {
             new PNotify({
                 title: 'Éxito!',
-                text: 'Los datos han si ingresados.',
+                text: 'El cliente ha sido ingresado con éxito.',
                 addclass: 'bg-success border-success'
             });
         });
@@ -166,6 +166,15 @@ var Pnotify = function() {
             new PNotify({
                 title: 'Warning notice',
                 text: 'Check me out! I\'m a notice.',
+                addclass: 'bg-warning border-warning'
+            });
+        });
+
+        // NOTIFICACION DE QUE YA EXISTE UN CLIENTE CON EL NUMERO DE TELEFONO INGRESADO
+        $('#buttonNotificarExistencia').on('click', function () {
+            new PNotify({
+                title: 'Atención!',
+                text: 'Ya existe un cliente con el telefóno ingresado.',
                 addclass: 'bg-warning border-warning'
             });
         });

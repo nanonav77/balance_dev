@@ -70,12 +70,50 @@ function insertarClientes(){
     var estado = document.getElementById("campoEstadoCliente").value;
     var direccion = document.getElementById("campoDireccionCliente").value;
 
+    /// Ajustar el formato de la fecha tal y como le necesita la BD
+    let current_datetime = new Date(fechaIngreso);
+    let formatted_date = current_datetime.getFullYear() + "-" + (current_datetime.getMonth() + 1) + "-" + current_datetime.getDate();
+
     if(nombre.length == 0 || apellidos.length == 0 || telefono.length == 0 || direccion.length == 0){        
         document.getElementById("buttonNotificarVacio").click();
     }
 
     else{
-         
-        document.getElementById("buttonNotificarInsercion").click();
+        
+        const xhttp = new XMLHttpRequest();
+
+        xhttp.open('GET','../logicaDatos/clientes/db_set_clientes.php?nombre_ingresado='+nombre+'&apellido_ingresado='+apellidos
+        +'&telefono_ingresado='+telefono+'&fecha_ingresado='+formatted_date+'&rol_ingresado='+rolAsistencia
+        +'&estado_ingresado='+estado+'&direccion_ingresado='+direccion,true);
+
+        xhttp.send();
+        
+        xhttp.onreadystatechange = function(){
+
+                if(this.readyState == 4 && this.status == 200){
+
+                    var validacion_existencia = this.responseText; // variable trae el valor de php donde 0 ya está creado y 1 que se puede crear como nuevo registro
+                    
+                    if (validacion_existencia == 0){
+                        
+                        document.getElementById('buttonNotificarExistencia').click();
+                        
+                    }
+                    else{                        
+                        document.getElementById("buttonNotificarInsercion").click();
+                        
+                        document.getElementById('campoNombreCliente').value = " ";
+                        document.getElementById('campoApellidosCliente').value = " ";
+                        document.getElementById('campoFechaIngresoCliente').value = " ";
+                        document.getElementById('campoTelefonoCliente').value = " ";
+                        document.getElementById('campoRolAsistenciaCliente').value = " ";
+                        document.getElementById('campoEstadoCliente').value = " ";
+                        document.getElementById('campoDireccionCliente').value = " ";
+                    }
+                    
+                }
+                
+        } 
+        
     }
 }

@@ -24,7 +24,6 @@
           $row_array['telefono'] = $row['telefono'];
           $row_array['fecha_pago'] = $row['fecha_pago'];
           $row_array['rol_asistencia'] = $row['rol_asistencia'];
-          $row_array['tipo_usuario'] = $row['tipo_usuario'];
           $row_array['estado'] = $row['estado'];
           array_push($return_arr,$row_array);
        }  
